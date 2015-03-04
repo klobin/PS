@@ -1,4 +1,4 @@
-package com.parkingsys.domain;
+package com.parkingsystem.domain;
 
 public class ParkingData {
 	private String vehicle_type;
