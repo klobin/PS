@@ -17,7 +17,6 @@
 
 	<!-- <import resource="classpath:backend-service.xml" /> -->
 	<context:component-scan base-package="com.parkingsystem.controller" />
-	
 	<mvc:annotation-driven />
 
 	<bean id="messageSource"
@@ -26,7 +25,7 @@
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 	
-	<bean id="parkingService" class="com.parkingsys.service.ParkingServiceImpl"></bean>
+	<bean id="parkingService" class="com.parkingsys.service.ParkingServiceImpl"/>
 
 	<bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">

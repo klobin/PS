@@ -1,10 +1,16 @@
 package com.parkingsystem.domain;
 
 public class ParkingData {
+	
 	private String vehicle_type;
 	private int floor_no;
 	private String parking_bay;
 	private String vehice_reg_no;
+	
+	public ParkingData(){
+		
+	}
+	
 	public String getVehicle_type() {
 		return vehicle_type;
 	}

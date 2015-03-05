@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
 import com.parkingsys.service.ParkingService;
 import com.parkingsystem.domain.AddFloor;
 import com.parkingsystem.domain.ParkingData;
@@ -24,46 +23,36 @@ public class Kontroller {
 	
 	@RequestMapping(value = "add", method = RequestMethod.POST ,produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean addFloor(@RequestBody AddFloor addFloor) throws Exception {
-		System.out.println("hello");
 		return parkingService.addLevel(addFloor.getNo_Bikes(), addFloor.getNo_Cars(), addFloor.getNo_Hvs());
 	}
 	
-	@RequestMapping(value = "list", method = RequestMethod.POST)/*, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)*/
+	@RequestMapping(value = "list", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Object overview() throws Exception {
-		AddFloor addFloor = new AddFloor(1, 2, 3);
-		Gson gson = new Gson();
-		System.out.println(gson.toJson(addFloor));
-		// Contract Service Interface call
-		return "Hello";
+		return parkingService.getOverview();
 	}
 	
 	@RequestMapping(value = "availabilty", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public HashMap<Integer, List<Object>> availabiltyCheck() throws Exception {
-		// Contract Service Interface call
-		return null;
+	public HashMap<Integer, List> availabiltyCheck() throws Exception {
+		return parkingService.availabilty();
 	}
 	
 	@RequestMapping(value = "park", method = RequestMethod.POST , produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean park(@RequestBody ParkingData parkingData) throws Exception {
-		// Contract Service Interface call
-		return false;
+		return parkingService.manage_Parking(parkingData.getFloor_no(), parkingData.getParking_bay(), parkingData.getVehice_reg_no(), parkingData.getVehicle_type(), true);
 	}
 	
 	@RequestMapping(value = "unpark", method = RequestMethod.POST , produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean unpark(@RequestBody ParkingData parkingData) throws Exception {
-		// Contract Service Interface call
-		return false;
+		return parkingService.manage_Parking(parkingData.getFloor_no(), parkingData.getParking_bay(), parkingData.getVehice_reg_no(), parkingData.getVehicle_type(), false);
 	}
 	
 	@RequestMapping(value = "locate" , method =  RequestMethod.POST , produces = MediaType.APPLICATION_JSON_VALUE , consumes = MediaType.APPLICATION_JSON_VALUE)
-	public  Object locateVehicle() throws Exception {
-		// Contract Service Interface call
-		return null;
+	public  List locateVehicle(@RequestBody String vehicle_reg_no) throws Exception {
+		return parkingService.locateVehcile(vehicle_reg_no);
 	}
 	
 	@RequestMapping(value = "remove" , method = RequestMethod.POST , produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean remove() throws Exception {
-		// Contract Service Interface call
-		return false;
+		return parkingService.remove();
 	}
 }

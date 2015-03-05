@@ -1,0 +1,29 @@
+
+
+----  For ADD 
+
+{
+  "no_Bikes":1,
+  "no_Cars":2,
+  "no_Hvs":3
+}
+
+
+
+---- For Park/Unpark
+
+{
+ "vehicle_type":"car",
+ "floor_no":3,
+ "parking_bay":"C2",
+ "vehice_reg_no":"suzuki"
+}
+
+
+----- For Locate
+
+Only name of vehicle
+
+Example:
+
+Honda
