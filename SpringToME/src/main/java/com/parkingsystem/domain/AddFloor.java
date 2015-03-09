@@ -3,8 +3,8 @@ package com.parkingsystem.domain;
 public class AddFloor {
 	
 	AddFloor(){
-		
 	}
+	
 	private int no_Bikes;
 	private int no_Cars;
 	private int no_Hvs;
